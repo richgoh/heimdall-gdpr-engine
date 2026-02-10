@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>External_Storage_URL__c</fullName>
+    <label>External Storage URL</label>
+    <description>URL of external data storage for this zone (e.g., AWS S3 bucket, Azure Blob Storage). Must start with http:// or https://</description>
+    <type>Url</type>
+</CustomField>

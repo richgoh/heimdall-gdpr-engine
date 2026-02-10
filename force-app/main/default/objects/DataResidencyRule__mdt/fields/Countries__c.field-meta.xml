@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Countries__c</fullName>
+    <label>Countries (Comma-separated)</label>
+    <description>List of countries in this zone (e.g., France,Germany,Belgium). Use comma-separated values without spaces.</description>
+    <type>LongTextArea</type>
+    <length>32768</length>
+    <visibleLines>5</visibleLines>
+</CustomField>

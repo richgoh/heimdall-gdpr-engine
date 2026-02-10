@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Requires_Encryption__c</fullName>
+    <label>Requires Data Encryption</label>
+    <description>If checked, data in this zone must be encrypted at rest. Required for GDPR-compliant zones (EU).</description>
+    <type>Checkbox</type>
+    <defaultValue>false</defaultValue>
+</CustomField>
