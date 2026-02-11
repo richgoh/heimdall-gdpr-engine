@@ -32,7 +32,6 @@ public with sharing class AccountsSelector {
             'BillingCity',
             'BillingStreet',
             'Phone',
-            'PersonEmail',
             'CreatedDate',
             'LastModifiedDate'
         };
