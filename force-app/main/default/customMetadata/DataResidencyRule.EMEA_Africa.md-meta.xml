@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>EMEA Africa Zone</label>
+    <protected>false</protected>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Countries__c</field>
+        <value xsi:type="xsd:string">South Africa,Nigeria,Kenya,Egypt,Morocco,Tunisia,Ghana,Ivory Coast,Senegal,Cameroon,Uganda,Tanzania,Ethiopia,Angola</value>
+    </values>
+    <values>
+        <field>External_Storage_URL__c</field>
+        <value xsi:type="xsd:string">https://af-south-1.amazonaws.com/emea-africa-bucket</value>
+    </values>
+    <values>
+        <field>Requires_Encryption__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Zone_Code__c</field>
+        <value xsi:type="xsd:string">EMEA</value>
+    </values>
+</CustomMetadata>
