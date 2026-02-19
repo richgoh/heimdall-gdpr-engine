@@ -1,0 +1,145 @@
+<template>
+    <lightning-card title="GDPR Data Residency Dashboard" icon-name="standard:dashboard">
+        
+        <!-- Loading Spinner -->
+        <template if:true={isLoading}>
+            <div class="slds-align_absolute-center slds-m-around_medium">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <!-- Error Message -->
+        <template if:true={error}>
+            <div class="slds-m-around_medium">
+                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+                    <span class="slds-assistive-text">error</span>
+                    <h2>{error}</h2>
+                </div>
+            </div>
+        </template>
+
+        <!-- Dashboard Content -->
+        <template if:false={isLoading}>
+            <template if:false={error}>
+                
+                <!-- Summary Statistics -->
+                <div class="slds-grid slds-wrap slds-m-around_medium">
+                    
+                    <!-- Total Accounts Card -->
+                    <div class="slds-col slds-size_1-of-3 slds-p-around_small">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">{totalAccounts}</div>
+                                <div class="stat-label">Total Accounts</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Encrypted Accounts Card -->
+                    <div class="slds-col slds-size_1-of-3 slds-p-around_small">
+                        <div class="stat-card stat-card-encrypted">
+                            <div class="stat-icon">
+                                <lightning-icon icon-name="standard:encrypted" size="small"></lightning-icon>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">{encryptedAccounts}</div>
+                                <div class="stat-label">Encrypted Accounts</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Encryption Rate Card -->
+                    <div class="slds-col slds-size_1-of-3 slds-p-around_small">
+                        <div class="stat-card stat-card-rate">
+                            <div class="stat-icon">
+                                <lightning-icon icon-name="standard:metrics" size="small"></lightning-icon>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">{encryptionRate}%</div>
+                                <div class="stat-label">Encryption Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zone Statistics Table -->
+                <div class="slds-m-around_medium">
+                    <h3 class="slds-text-heading_small slds-m-bottom_small">Accounts by GDPR Zone</h3>
+                    
+                    <template if:true={hasZoneStats}>
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Zone">Zone</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Code">Code</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Accounts">Accounts</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Encryption">Encryption</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Storage">Storage URL</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={zoneStats} for:item="zone">
+                                    <tr key={zone.zoneCode} class="slds-hint-parent">
+                                        <td data-label="Zone">
+                                            <div class="slds-truncate">{zone.zoneName}</div>
+                                        </td>
+                                        <td data-label="Code">
+                                            <lightning-badge label={zone.zoneCode}></lightning-badge>
+                                        </td>
+                                        <td data-label="Accounts">
+                                            <div class="slds-truncate">{zone.accountCount}</div>
+                                        </td>
+                                        <td data-label="Encryption">
+                                            <template if:true={zone.requiresEncryption}>
+                                                <lightning-icon icon-name="utility:lock" 
+                                                               size="x-small" 
+                                                               variant="success" 
+                                                               alternative-text="Encrypted">
+                                                </lightning-icon>
+                                                <span class="slds-m-left_x-small">Required</span>
+                                            </template>
+                                            <template if:false={zone.requiresEncryption}>
+                                                <lightning-icon icon-name="utility:unlock" 
+                                                               size="x-small" 
+                                                               variant="warning" 
+                                                               alternative-text="Not Encrypted">
+                                                </lightning-icon>
+                                                <span class="slds-m-left_x-small">Optional</span>
+                                            </template>
+                                        </td>
+                                        <td data-label="Storage">
+                                            <div class="slds-truncate" title={zone.storageUrl}>
+                                                {zone.storageUrl}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </template>
+
+                    <template if:false={hasZoneStats}>
+                        <div class="slds-align_absolute-center slds-m-vertical_medium">
+                            <p class="slds-text-color_weak">No zone statistics available</p>
+                        </div>
+                    </template>
+                </div>
+
+            </template>
+        </template>
+
+    </lightning-card>
+</template>

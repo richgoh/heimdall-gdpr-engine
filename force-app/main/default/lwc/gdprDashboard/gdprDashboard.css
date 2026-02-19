@@ -1,0 +1,60 @@
+/* ══════════════════════════════════════════════════════
+   GDPR Dashboard Styles
+   ══════════════════════════════════════════════════════ */
+
+/* Statistics Cards */
+.stat-card {
+    background: #ffffff;
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card-encrypted {
+    border-left: 4px solid #2e844a;
+}
+
+.stat-card-rate {
+    border-left: 4px solid #0176d3;
+}
+
+.stat-icon {
+    flex-shrink: 0;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #080707;
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: #706e6b;
+    margin-top: 0.25rem;
+}
+
+/* Table Styling */
+.slds-table tbody tr:hover {
+    background-color: #f3f2f2;
+}
+
+/* Loading State */
+.slds-align_absolute-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
