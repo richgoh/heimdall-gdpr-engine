@@ -65,6 +65,37 @@
                     </div>
                 </div>
 
+                <!-- Chart Section (CSS Bars) -->
+                <div class="slds-m-around_medium">
+                    <h3 class="slds-text-heading_small slds-m-bottom_medium">Account Distribution by GDPR Zone</h3>
+                    
+                    <template if:true={hasZoneStats}>
+                        <div class="chart-css-container">
+                            <template for:each={zoneStats} for:item="zone">
+                                <div key={zone.zoneCode} class="chart-bar-row">
+                                    <div class="chart-bar-label">
+                                        <lightning-badge label={zone.zoneCode}></lightning-badge>
+                                        <span class="chart-bar-name">{zone.zoneName}</span>
+                                    </div>
+                                    <div class="chart-bar-container">
+                                        <div class="chart-bar" 
+                                             data-zone={zone.zoneCode}
+                                             style={zone.barStyle}>
+                                            <span class="chart-bar-value">{zone.accountCount}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+
+                    <template if:false={hasZoneStats}>
+                        <div class="slds-align_absolute-center slds-m-vertical_medium">
+                            <p class="slds-text-color_weak">No zone statistics available</p>
+                        </div>
+                    </template>
+                </div>
+
                 <!-- Zone Statistics Table -->
                 <div class="slds-m-around_medium">
                     <h3 class="slds-text-heading_small slds-m-bottom_small">Accounts by GDPR Zone</h3>

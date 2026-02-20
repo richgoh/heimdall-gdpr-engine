@@ -52,9 +52,75 @@
     background-color: #f3f2f2;
 }
 
-/* Loading State */
-.slds-align_absolute-center {
+/* CSS Chart Bars */
+.chart-css-container {
+    background: #ffffff;
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+    padding: 1.5rem;
+}
+
+.chart-bar-row {
     display: flex;
-    justify-content: center;
     align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.chart-bar-row:last-child {
+    margin-bottom: 0;
+}
+
+.chart-bar-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 180px;
+    flex-shrink: 0;
+}
+
+.chart-bar-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #080707;
+}
+
+.chart-bar-container {
+    flex: 1;
+    height: 40px;
+    background: #f3f2f2;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.chart-bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 0.75rem;
+    border-radius: 4px;
+    transition: width 1s ease-in-out;
+    box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chart-bar-value {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Zone-specific colors (backup if inline style fails) */
+.chart-bar[data-zone="EU"] {
+    background-color: #2e844a;
+}
+
+.chart-bar[data-zone="US"] {
+    background-color: #0176d3;
+}
+
+.chart-bar[data-zone="EMEA"] {
+    background-color: #ff9a00;
 }
